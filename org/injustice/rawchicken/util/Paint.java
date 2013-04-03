@@ -1,5 +1,6 @@
 package org.injustice.rawchicken.util;
 
+import org.injustice.rawchicken.RawChickenPicker;
 import org.powerbot.game.api.methods.input.Mouse;
 
 import java.awt.*;
@@ -40,14 +41,14 @@ public class Paint {
 
             g.drawString("Injustice's Chicken Picker", 8, 196);
             g.setFont(font2);
-            g.drawString("v0.2", 173, 196);
+            g.drawString("v" + RawChickenPicker.VERSION, 173, 196);
             g.setFont(font3);
-            g.drawString("Chicken Picked: " + format(Var.chickensPicked, 2), loc.x, loc.y);     // loc.x, loc.y
-            g.drawString("Chicken PH: " + format(chickensHour, 2), loc.x, loc.y + 15);          // +90, loc.y
-            g.drawString("Cash Made: " + format(cashMade, 2), loc.x, loc.y + 30);       // loc.x, +15
-            g.drawString("Cash PH: " + format(cashHour, 2), loc.x, loc.y + 45);         // +89, +15
-            g.drawString("Runtime: " + Var.runTime.toElapsedString(), loc.x, loc.y + 60); // loc.x, +70
-            g.drawString("Status: " + Var.status, loc.x, loc.y + 75);            // loc.x, + 85
+            g.drawString("Chicken Picked: " + format(Var.chickensPicked, 2), loc.x, loc.y);
+            g.drawString("Chicken PH: " + format(chickensHour, 2), loc.x, loc.y + 15);
+            g.drawString("Cash Made: " + format(cashMade, 2), loc.x, loc.y + 30);
+            g.drawString("Cash PH: " + format(cashHour, 2), loc.x, loc.y + 45);
+            g.drawString("Runtime: " + Var.runTime.toElapsedString(), loc.x, loc.y + 60);
+            g.drawString("Status: " + Var.status, loc.x, loc.y + 75);
             g.drawString("Click to hide", loc.x + 123, loc.y + 75);
             g.drawString("Show tiles", loc.x + 133, loc.y + 45);
             g.drawString("Show mouse", loc.x + 122, loc.y + 60);
