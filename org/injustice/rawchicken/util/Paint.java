@@ -1,74 +1,85 @@
 package org.injustice.rawchicken.util;
 
 import org.powerbot.game.api.methods.input.Mouse;
-import org.powerbot.game.api.util.net.GeItem;
 
 import java.awt.*;
 
-import static org.injustice.rawchicken.util.Variables.*;
+import static org.injustice.rawchicken.util.Methods.format;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Azmat
- * Date: 19/03/13
+ * Date: 29/03/13
  * Time: 20:35
  * To change this template use File | Settings | File Templates.
  */
 public class Paint {
     public static void onRepaint(Graphics g1) {
-        int chickensHour = (int) (chickensPicked * 3600000d / runTime.getElapsed());
-        int chickenPrice = GeItem.lookup(RAW_CHICKEN_ID).getPrice();   // raw chicken
-        int cashMade = chickenPrice * chickensPicked;
-        int cashHour = (int) (cashMade * 3600000d / runTime.getElapsed());
-
         Graphics2D g = (Graphics2D) g1;
-        BasicStroke stroke1 = new BasicStroke(1);
-        g.setStroke(stroke1);
-        Font font1 = new Font("Tahoma", 0, 15);
-        Font font2 = new Font("Tahoma", 0, 9);
-        Font font3 = new Font("Tahoma", 0, 11);
         Point loc = new Point(10, 220);
-        Color grey = new Color(0, 0, 0, 100);
-        Color blue = new Color(10, 50, 255, 100);
-        Color green = new Color(10, 255, 50, 100);
+        Color green = new Color(20, 126, 59, 150);
+        if (!Var.hidePaint) {
+            int chickensHour = (int) (Var.chickensPicked * 3600000d / Var.runTime.getElapsed());
+            int cashMade = Var.chickenPrice * Var.chickensPicked;
+            int cashHour = (int) (cashMade * 3600000d / Var.runTime.getElapsed());
 
-        g.setColor(grey);
-        g.fillRoundRect(5, 178, 190, 160, 7, 7);
-        g.setColor(Color.GREEN);
-        g.setStroke(stroke1);
-        g.drawRoundRect(5, 178, 190, 160, 7, 7);
-        g.drawRect(5, 178, 190, 21);
-        g.setFont(font1);
+            BasicStroke stroke1 = new BasicStroke(1);
+            g.setStroke(stroke1);
+            Font font1 = new Font("Tahoma", 0, 15);
+            Font font2 = new Font("Tahoma", 0, 9);
+            Font font3 = new Font("Tahoma", 0, 11);
+            Color grey = new Color(0, 0, 0, 100);
 
-        g.drawString("Injustice's Chicken Picker", 8, 196);
-        g.setFont(font2);
-        g.drawString("v0.2", 173, 196);
-        g.setFont(font3);
-        g.drawString("Chicken Picked: " + chickensPicked, loc.x, loc.y);     // loc.x, loc.y
-        g.drawString("Chicken PH: " + chickensHour, loc.x + 90, loc.y);          // +90, loc.y
-        g.drawString("Cash Made: " + cashMade, loc.x, loc.y + 15);       // loc.x, +15
-        g.drawString("Cash PH: " + cashHour, loc.x + 89, loc.y + 15);         // +89, +15
- //       g.drawString("Levels: " , loc.x + 90, loc.y + 30);     // + 90, +30
- //       g.drawString("Start level: " , loc.x, loc.y + 30);   // loc.x, +30
- //       g.drawString("Logs cut: ", loc.x, loc.y + 45);         // loc.x, +45
- //       g.drawString("Logs PH: " , loc.x + 90, loc.y + 45);        // +90, +45
-        g.drawString("Runtime: " + runTime.toElapsedString(), loc.x, loc.y + 70); // loc.x, +70
-        g.drawString("Status: " + status, loc.x, loc.y + 85);            // loc.x, + 85
+            g.setColor(grey);
+            g.fillRoundRect(5, 178, 190, 120, 7, 7);
+            g.setColor(Color.GREEN);
+            g.setStroke(stroke1);
+            g.drawRoundRect(5, 178, 190, 120, 7, 7);
+            g.drawRect(5, 178, 190, 21);
+            g.setFont(font1);
 
-        drawMouse(g);
+            g.drawString("Injustice's Chicken Picker", 8, 196);
+            g.setFont(font2);
+            g.drawString("v0.2", 173, 196);
+            g.setFont(font3);
+            g.drawString("Chicken Picked: " + format(Var.chickensPicked, 2), loc.x, loc.y);     // loc.x, loc.y
+            g.drawString("Chicken PH: " + format(chickensHour, 2), loc.x, loc.y + 15);          // +90, loc.y
+            g.drawString("Cash Made: " + format(cashMade, 2), loc.x, loc.y + 30);       // loc.x, +15
+            g.drawString("Cash PH: " + format(cashHour, 2), loc.x, loc.y + 45);         // +89, +15
+            g.drawString("Runtime: " + Var.runTime.toElapsedString(), loc.x, loc.y + 60); // loc.x, +70
+            g.drawString("Status: " + Var.status, loc.x, loc.y + 75);            // loc.x, + 85
+            g.drawString("Click to hide", loc.x + 123, loc.y + 75);
+            g.drawString("Show tiles", loc.x + 133, loc.y + 45);
+            g.drawString("Show mouse", loc.x + 122, loc.y + 60);
+            g.drawString("Take screenshot", loc.x + 104, loc.y);
+            g.setColor(green);
+            g.drawRoundRect(132, 285, 59, 11, 3, 3);   // hide paint
+            g.drawRoundRect(131, 270, 61, 11, 3, 3);   // show mouse
+            g.drawRoundRect(140, 255, 52, 11, 3, 3);   // show tiles
+            g.drawRoundRect(112, 210, 81, 11, 3, 3);   // take screenshot
+            if (Var.showMouse) drawMouse(g);
+            if (Var.showTiles) Methods.drawTiles(g, Var.CHICKEN_AREA, Var.RAW_CHICKEN_ID, Color.GREEN, Color.BLUE, Color.BLACK);
+        } else {
+            Font font3 = new Font("Tahoma", 0, 11);
+            g.setFont(font3);
+            g.setColor(Color.GREEN);
+            g.drawString("Show paint", loc.x + 126, loc.y + 75);
+            g.setColor(green);
+            g.drawRoundRect(132, 285, 59, 11, 3, 3);  // show paint
+        }
     }
 
-    public static void drawMouse(Graphics g1) {
-        ((Graphics2D) g1).setRenderingHints(new RenderingHints(
-                RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON));
+    /**
+     * @param g1 Graphics
+     * @author not me, will find - phl0w/pxpc2, not sure
+     */
+    private static void drawMouse(Graphics g1) {
         Point p = Mouse.getLocation();
         Color[] gradient = new Color[]{new Color(255, 0, 0),
                 new Color(255, 0, 255), new Color(0, 0, 255),
                 new Color(0, 255, 255), new Color(0, 255, 0),
                 new Color(255, 255, 0), new Color(255, 0, 0)};
         Color outerCircle = gradient[0];
-        Color innerCircle = Color.white;
         g1.setColor(gradient[0]);
         int circleRadius = 7;
         int circleDiameter = circleRadius * 2;
