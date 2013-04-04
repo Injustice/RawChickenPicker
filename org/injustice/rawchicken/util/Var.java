@@ -39,6 +39,7 @@ public class Var {
 
     public static int chickensPicked;
     public static int chickenPrice;
+    public static int bonesPicked;
 
         /* -- Booleans -- */
 
@@ -65,15 +66,15 @@ public class Var {
 
         /* -- Tiles -- */
 
-    public static final Tile CHICKEN_TILE = new Tile(3229, 3298, 0);
-    public static final Tile GATE_TILE = new Tile(3237, 3296, 0);
+    public static final Tile CHICKEN_TILE = new Tile(3230, 3298, 0);
+    public static final Tile GATE_TILE = new Tile(3238, 3297, 0);
     public static final Tile BANK_TILE = new Tile(3214, 3257, 0);
 
         /* -- Areas -- */
 
-    public static final Area CHICKEN_AREA = new Area(new Tile[]{new Tile(3223, 3302, 0), new Tile(3238, 3302, 0), new Tile(3238, 3293, 0),
-            new Tile(3235, 3293, 0), new Tile(3235, 3287, 0), new Tile(3230, 3287, 0),
-            new Tile(3230, 3295, 0), new Tile(3223, 3295, 0)});
+    public static final Area CHICKEN_AREA = new Area(new Tile(3223, 3302, 0), new Tile(3236, 3302, 0), new Tile(3236, 3294, 0),
+            new Tile(3223, 3294, 0));
+
 
         /* -- TileArrays -- */  /* Saved if needed in future */
 
