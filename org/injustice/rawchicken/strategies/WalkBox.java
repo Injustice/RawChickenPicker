@@ -44,7 +44,7 @@ public class WalkBox extends Node {
                         Camera.turnTo(depositbox);
                     }
                 }
-            } else {
+            } else if (Var.CHICKEN_AREA.contains(Players.getLocal().getLocation())) {
                 Var.status = "Walking to gate";
                 Walking.walk(Var.GATE_TILE);
                 do sleep(500, 750); while (Players.getLocal().isMoving());
