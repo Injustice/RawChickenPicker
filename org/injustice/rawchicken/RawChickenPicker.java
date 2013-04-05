@@ -33,7 +33,7 @@ import static org.injustice.rawchicken.util.Var.*;
 
 @Manifest(authors = {"Bartsome/Injustice"}, name = "Raw Chicken Picker", description = "Picks raw chicken in lumbridge and banks", version = RawChickenPicker.VERSION)
 public class RawChickenPicker extends ActiveScript implements PaintListener, MouseListener {
-    public static final double VERSION = 2.1;
+    public static final double VERSION = 2.2;
 
     private final List<Node> jobsCollection = Collections.synchronizedList(new ArrayList<Node>());
     private Tree jobContainer = null;

@@ -74,6 +74,14 @@ public class Var {
 
     public static final Area CHICKEN_AREA = new Area(new Tile(3223, 3302, 0), new Tile(3236, 3302, 0), new Tile(3236, 3294, 0),
             new Tile(3223, 3294, 0));
+    public static final Area WEST_OF_HUT = new Area(new Tile(3225, 3301, 1), new Tile(3227, 3301, 1),  // west of hut
+            new Tile(3227, 3295, 1), new Tile(3225, 3201, 1));
+    public static final Area NEAR_DEPOSITBOX = new Area(new Tile(3226, 3242, 0), new Tile(3232, 3242, 0), new Tile(3232, 3235, 0),
+            new Tile(3226, 3235, 0), new Tile(3230, 3232, 0), new Tile(3235, 3232, 0),
+            new Tile(3235, 3237, 0), new Tile(3235, 3242, 0), new Tile(3232, 3246, 0),
+            new Tile(3227, 3247, 0), new Tile(3222, 3247, 0), new Tile(3220, 3242, 0),
+            new Tile(3220, 3237, 0), new Tile(3223, 3233, 0), new Tile(3228, 3232, 0),
+            new Tile(3230, 3232, 0), new Tile(3226, 3236, 0));
 
 
         /* -- TileArrays -- */  /* Saved if needed in future */

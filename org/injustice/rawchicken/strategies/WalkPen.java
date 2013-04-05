@@ -45,10 +45,12 @@ public class WalkPen extends Node {
             } else {
                 Var.status = "Walking to gate";
                 Walking.findPath(Var.GATE_TILE).traverse();
+                do sleep(500, 750); while (Players.getLocal().isMoving());
             }
         } else {
             Var.status = "Walking into pen";
             Walking.findPath(Var.CHICKEN_TILE).traverse();
+            do sleep(500, 750); while (Players.getLocal().isMoving());
         }
     }
 }

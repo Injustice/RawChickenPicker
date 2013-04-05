@@ -40,19 +40,30 @@ public class WalkBox extends Node {
                 if (Var.closedGate.interact("Open")) {
                     do sleep(500, 750); while (Players.getLocal().isMoving());
                     Walking.findPath(Var.BANK_TILE).traverse();
-                    if (Calculations.distanceTo(depositbox) <= 15 && !depositbox.isOnScreen()) {
+                    if (Calculations.distanceTo(depositbox) <= 20 && !depositbox.isOnScreen()) {
                         Camera.turnTo(depositbox);
                     }
                 }
-            } else if (Var.CHICKEN_AREA.contains(Players.getLocal().getLocation())) {
+            } else if (Var.CHICKEN_AREA.contains(Players.getLocal().getLocation())){
                 Var.status = "Walking to gate";
                 Walking.walk(Var.GATE_TILE);
                 do sleep(500, 750); while (Players.getLocal().isMoving());
-            }                                                         // else walk to closed gate
+                break out;
+            } else if (Var.WEST_OF_HUT.contains(Players.getLocal().getLocation())) {
+                Var.status = "West of hut";
+                Walking.walk(Var.GATE_TILE);
+                do sleep(500, 750); while (Players.getLocal().isMoving());
+                break out;
+            } else if (Var.NEAR_DEPOSITBOX.contains(Players.getLocal().getLocation())) {
+                Var.status = "Near bank";
+                Walking.walk(Var.BANK_TILE);
+                do sleep(200, 500); while (Players.getLocal().isMoving());
+                break out;
+            }
         } else {                                                     // else
             Var.status = "Walking to bank";                              // change status
             Walking.findPath(Var.BANK_TILE).traverse();                  // find a path to bank tile and walk it
-            if (Calculations.distanceTo(depositbox) <= 15 && !depositbox.isOnScreen()) {
+            if (Calculations.distanceTo(depositbox) <= 20 && !depositbox.isOnScreen()) {
                 Camera.turnTo(depositbox);
             }
         }                                                            // end if
